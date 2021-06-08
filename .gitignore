@@ -1,2 +1,5 @@
 news.db
 btv_elem
+node_modules/
+package.json
+package-lock.json
