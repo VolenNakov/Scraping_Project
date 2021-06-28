@@ -7,7 +7,7 @@ let db = new sqlite3.Database('news.db', sqlite3.OPEN_READONLY, (err) => {
   if (err) {
     return console.error(err.message);
   }
-  console.log('Connected databse')
+  console.log('Connected to database')
 });
 
 class Article {
@@ -19,10 +19,11 @@ class Article {
 
 app.get('/', (req, res) => {
   let html = "";
-	db.all('SELECT href, title FROM news', (err, articles) => {
+	db.all('SELECT href, img_src, title FROM news', (err, articles) => {
 		// тук вече имаме данните
 		for (let i = 0; i < articles.length; i++) {
-			html += '<p><a href="' + articles[i].href + '">' + articles[i].title + '</a><br>'
+			html += '<p><a href="https://btvnovinite.bg' + articles[i].href + '">' + articles[i].title + '</a><img src='+articles[i].img_src+' width="200" height="100"><br>'
+            
 		};
 		res.send(html)
 	});

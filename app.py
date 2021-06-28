@@ -59,7 +59,7 @@ def addToDb(element):
 
 def main():
     scrapMainPage()
-    scrapAtricle('bulgaria/izpitite-sled-4-klas-srednijat-rezultat-e-5-00.html')
+    #scrapAtricle('bulgaria/izpitite-sled-4-klas-srednijat-rezultat-e-5-00.html')
 
 if __name__ == "__main__":
     main()
