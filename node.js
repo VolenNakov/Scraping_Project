@@ -19,16 +19,21 @@ class Article {
 
 app.get('/', (req, res) => {
   let html = "";
-	db.all('SELECT href, img_src, title FROM news', (err, articles) => {
+	db.all('SELECT id, img_src, title FROM news', (err, articles) => {
 		// тук вече имаме данните
 		for (let i = 0; i < articles.length; i++) {
-			html += '<p><a href="https://btvnovinite.bg' + articles[i].href + '">' + articles[i].title + '</a><img src='+articles[i].img_src+' width="200" height="100"><br>'
+			html += '<p><a href="' + articles[i].id + '">' + articles[i].title + '</a><img src='+articles[i].img_src+' width="200" height="100"><br>'
             
 		};
 		res.send(html)
 	});
 });
-
+app.get('/:articleid', (req, res) => {
+    let html = '';
+    console.log(req.params['articleid']);
+    res.send(html) 
+});
+app.get('/favicon.ico', (req, res) => res.status(204));
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 });
